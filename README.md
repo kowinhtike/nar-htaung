@@ -22,8 +22,8 @@
 ## Quick start
 
 ```bash
-git clone https://github.com/kowinhtike/nara-sar-web.git
-cd nara-sar-web
+git clone https://github.com/kowinhtike/nar-htaung.git
+cd nar-htaung
 npm install
 npm start            # http://localhost:4173
 ```

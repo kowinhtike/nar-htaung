@@ -18,11 +18,11 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kowinhtike/nara-sar-web.git"
+    "url": "git+https://github.com/kowinhtike/nar-htaung.git"
   },
-  "homepage": "https://github.com/kowinhtike/nara-sar-web#readme",
+  "homepage": "https://github.com/kowinhtike/nar-htaung#readme",
   "bugs": {
-    "url": "https://github.com/kowinhtike/nara-sar-web/issues"
+    "url": "https://github.com/kowinhtike/nar-htaung/issues"
   },
   "engines": {
     "node": ">=18"
