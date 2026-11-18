@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "type": "module",
-  "description": "NarHtaung — standalone Burmese and English speech recognition that runs entirely in the browser, powered by Nara SAR",
+  "description": "NarHtaung \u2014 standalone Burmese and English speech recognition that runs entirely in the browser, powered by Nara SAR",
   "keywords": [
     "speech-recognition",
     "asr",
@@ -29,10 +29,13 @@
   },
   "scripts": {
     "start": "node server.mjs",
+    "build": "node tools/build.mjs",
+    "preview": "node tools/build.mjs && node server.mjs --root dist --port 4177",
+    "deploy": "node tools/build.mjs && npx wrangler pages deploy dist --project-name nar-htaung",
     "fetch": "bash tools/fetch-model.sh",
     "sample": "bash tools/make-sample.sh",
     "parity": "node tools/parity.mjs",
-    "check": "for f in src/*.js server.mjs tools/parity.mjs; do node --check \"$f\" || exit 1; done"
+    "check": "for f in src/*.js server.mjs tools/*.mjs; do node --check \"$f\" || exit 1; done"
   },
   "dependencies": {
     "onnxruntime-web": "^1.31.1"

@@ -11,8 +11,16 @@ import { createReadStream, statSync } from 'node:fs';
 import { extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const root = resolve(fileURLToPath(new URL('.', import.meta.url)));
-const port = Number(process.env.PORT || 4173);
+const args = process.argv.slice(2);
+const flag = (name, fallback) => {
+  const index = args.indexOf(`--${name}`);
+  return index !== -1 && args[index + 1] ? args[index + 1] : fallback;
+};
+
+const here = resolve(fileURLToPath(new URL('.', import.meta.url)));
+// --root dist serves the production bundle built by `npm run build`.
+const root = resolve(here, flag('root', process.env.ROOT || '.'));
+const port = Number(flag('port', process.env.PORT || 4173));
 
 const types = {
   '.html': 'text/html; charset=utf-8',

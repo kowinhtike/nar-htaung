@@ -43,6 +43,32 @@ Force a source with a URL parameter: `?source=local` or `?source=hf`.
 
 ## Deploy
 
+`npm run build` writes a static bundle to `dist/` — 14 files, ~15 MB. Model weights are **never uploaded**: the browser fetches them from Hugging Face on first load and caches them.
+
+```bash
+npm run build
+npm run preview      # serve dist/ on :4177 with production headers
+```
+
+### Cloudflare Pages
+
+Dashboard → Workers & Pages → Create → Pages → Connect to Git:
+
+| Setting | Value |
+|---|---|
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+
+Or from the CLI:
+
+```bash
+npm run deploy       # build + npx wrangler pages deploy dist --project-name nar-htaung
+```
+
+`wrangler.toml` and `_headers` are already in the repo. `_headers` is copied into `dist/`, so Pages serves `Cross-Origin-Opener-Policy` / `Cross-Origin-Embedder-Policy` and multi-threaded WASM works. Every asset is under the 25 MiB per-file limit (the largest is the 14.8 MB ONNX Runtime wasm). First visit downloads ~430 MB from the Hugging Face CDN; later visits load from the browser cache in about a second.
+
+### Other hosts
+
 Any static host works. Two things matter:
 
 1. **COOP/COEP headers** enable `SharedArrayBuffer`, which is what lets WASM run multi-threaded (roughly 3× faster). Without them the app still works, single-threaded.

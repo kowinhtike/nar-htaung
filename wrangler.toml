@@ -1,0 +1,10 @@
+# Cloudflare Pages configuration.
+# Build with `npm run build` (produces dist/), or let the dashboard use the same
+# settings: build command `npm run build`, output directory `dist`.
+#
+# Only the app shell is uploaded (~15 MB). Model weights are fetched from
+# Hugging Face by the browser on first load and cached in OPFS.
+
+name = "nar-htaung"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-09-01"
