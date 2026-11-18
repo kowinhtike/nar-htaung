@@ -31,7 +31,7 @@
     "start": "node server.mjs",
     "build": "node tools/build.mjs",
     "preview": "node tools/build.mjs && node server.mjs --root dist --port 4177",
-    "deploy": "node tools/build.mjs && npx wrangler pages deploy dist --project-name nar-htaung",
+    "deploy": "node tools/build.mjs && npx wrangler deploy",
     "fetch": "bash tools/fetch-model.sh",
     "sample": "bash tools/make-sample.sh",
     "parity": "node tools/parity.mjs",

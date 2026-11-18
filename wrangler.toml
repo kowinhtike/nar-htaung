@@ -1,10 +1,17 @@
-# Cloudflare Pages configuration.
-# Build with `npm run build` (produces dist/), or let the dashboard use the same
-# settings: build command `npm run build`, output directory `dist`.
+# Cloudflare Workers with static assets.
 #
-# Only the app shell is uploaded (~15 MB). Model weights are fetched from
-# Hugging Face by the browser on first load and cached in OPFS.
+# Build command (dashboard or CI):  npm run build
+# Deploy command:                   npx wrangler deploy
+#
+# Only the app shell in dist/ is uploaded (~15 MB). Model weights are fetched
+# from Hugging Face by the browser on first load and cached in OPFS, so nothing
+# large goes through Cloudflare and every asset stays under the 25 MiB limit.
+#
+# dist/_headers is parsed by Workers, which is what applies COOP/COEP and makes
+# multi-threaded WASM possible.
 
 name = "nar-htaung"
-pages_build_output_dir = "dist"
 compatibility_date = "2025-09-01"
+
+[assets]
+directory = "./dist"

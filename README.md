@@ -50,22 +50,25 @@ npm run build
 npm run preview      # serve dist/ on :4177 with production headers
 ```
 
-### Cloudflare Pages
+### Cloudflare Workers (static assets)
 
-Dashboard → Workers & Pages → Create → Pages → Connect to Git:
+`wrangler.toml` uploads `dist/` as a Workers static-assets deployment:
 
 | Setting | Value |
 |---|---|
 | Build command | `npm run build` |
-| Build output directory | `dist` |
+| Deploy command | `npx wrangler deploy` |
 
-Or from the CLI:
+Dashboard: Workers & Pages → Create → Import a repository → pick this repo, then set the two commands above. Or from a laptop:
 
 ```bash
-npm run deploy       # build + npx wrangler pages deploy dist --project-name nar-htaung
+npx wrangler login
+npm run deploy
 ```
 
-`wrangler.toml` and `_headers` are already in the repo. `_headers` is copied into `dist/`, so Pages serves `Cross-Origin-Opener-Policy` / `Cross-Origin-Embedder-Policy` and multi-threaded WASM works. Every asset is under the 25 MiB per-file limit (the largest is the 14.8 MB ONNX Runtime wasm). First visit downloads ~430 MB from the Hugging Face CDN; later visits load from the browser cache in about a second.
+`dist/_headers` is parsed by Workers, so `Cross-Origin-Opener-Policy` / `Cross-Origin-Embedder-Policy` are applied and multi-threaded WASM works. Every asset is under the 25 MiB per-file limit — the largest is the 14.8 MB ONNX Runtime wasm. First visit downloads ~430 MB from the Hugging Face CDN; later visits load from the browser cache in about a second.
+
+> Deploying with `wrangler deploy` (not `wrangler pages deploy`) is what the Workers build pipeline runs. If you would rather have a Pages project, use build command `npm run build` and output directory `dist` with no deploy command — Pages reads the same `_headers`.
 
 ### Other hosts
 
@@ -74,7 +77,7 @@ Any static host works. Two things matter:
 1. **COOP/COEP headers** enable `SharedArrayBuffer`, which is what lets WASM run multi-threaded (roughly 3× faster). Without them the app still works, single-threaded.
 2. **Large model files** are best left to the Hugging Face CDN (the default when `./models` is absent), since most hosts cap individual file size.
 
-`_headers` (Netlify, Cloudflare Pages) and `vercel.json` are included:
+`_headers` (Netlify, Cloudflare) and `vercel.json` are included:
 
 ```text
 /*
