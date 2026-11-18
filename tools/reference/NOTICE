@@ -1,0 +1,25 @@
+Nara SAR
+Copyright 2026 Nara contributors
+https://naraaudio.app
+
+Nara SAR is Nara's Burmese/English fine-tune of Meta omniASR-CTC-300M.
+Upstream model: https://huggingface.co/facebook/omniASR-CTC-300M
+Copyright 2025 Meta Platforms, Inc. and affiliates.
+The model is distributed under the Apache License, Version 2.0.
+
+This release includes Nara's fine-tuned acoustic weights, matching tokenizer,
+bilingual character language model, final CTC beam decoder and Burmese structural
+syllable rules. Original checkpoint tensors were repackaged losslessly into
+SafeTensors. The ONNX exports adapt the inference graph; the INT8 variant
+quantizes constant matrix multiplications and retains FP32 convolutions.
+
+The portable Torch architecture follows fairseq2's wav2vec2 implementation.
+Copyright (c) Meta Platforms, Inc. and affiliates.
+fairseq2 is MIT-licensed; see LICENSES/fairseq2-MIT.txt.
+
+ONNX Runtime is provided by Microsoft under the MIT license and is installed
+separately. Torch, NumPy, SafeTensors, SoundFile and their dependencies retain
+their own licenses. See THIRD_PARTY.md.
+
+This NOTICE preserves attribution and describes modifications. It does not
+add restrictions to the Apache License or require a particular product name.

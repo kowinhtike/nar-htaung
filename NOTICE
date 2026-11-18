@@ -1,0 +1,45 @@
+Nara SAR Web Client
+Copyright 2026 Nara SAR Web Client contributors
+
+This product includes software and model artefacts developed by Nara
+contributors, distributed under the Apache License, Version 2.0.
+
+    Nara SAR
+    Copyright 2026 Nara contributors
+    https://naraaudio.app
+    https://huggingface.co/YeeNyunn/nara-sar
+
+Modifications
+-------------
+The files src/decoder.js, src/lm.js, src/syllables.js and src/audio.js in this
+repository are JavaScript ports of sar_decoder.py, sar_syllables.py and
+transcribe.py from the Nara SAR release. They were translated from Python to
+JavaScript so the decoder can run in a web browser, and they keep the original
+decoding recipe unchanged (beam 16, top-k 10, alpha 0.6, beta 0, blank id 0,
+bilingual character 6-gram language model, Burmese structural syllable rules).
+The Python originals are kept unmodified in tools/reference/ for parity testing.
+
+No model weights are redistributed in this repository. The client downloads
+them at runtime either from its own ./models directory or from the Hugging Face
+repository above, and caches them in the browser's origin private file system.
+
+Upstream attribution
+--------------------
+Nara SAR is Nara's Burmese/English fine-tune of Meta omniASR-CTC-300M.
+
+    Upstream model: https://huggingface.co/facebook/omniASR-CTC-300M
+    Copyright 2025 Meta Platforms, Inc. and affiliates.
+    Licensed under the Apache License, Version 2.0.
+
+The portable Torch architecture follows fairseq2's wav2vec2 implementation.
+
+    Copyright (c) Meta Platforms, Inc. and affiliates.
+    fairseq2 is MIT-licensed; see tools/reference/LICENSE and THIRD_PARTY notes.
+
+ONNX Runtime Web is provided by Microsoft Corporation under the MIT license and
+is vendored in vendor/ort/ unmodified.
+
+This NOTICE preserves attribution and describes modifications. It does not add
+restrictions to the Apache License, and it does not grant rights to the Nara or
+Meta names, logos or trademarks. This project is an independent client; it is
+not an official Nara release and is not endorsed by Nara or Meta.

@@ -1,0 +1,10 @@
+* text=auto eol=lf
+
+# Keep the upstream reference sources byte-for-byte as released.
+tools/reference/*.py -text
+
+*.wasm binary
+*.onnx binary
+*.lm binary
+*.wav binary
+*.png binary

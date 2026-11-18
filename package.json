@@ -1,0 +1,40 @@
+{
+  "name": "nara-sar-web",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "Standalone Burmese and English speech recognition that runs entirely in the browser, powered by Nara SAR",
+  "keywords": [
+    "speech-recognition",
+    "asr",
+    "burmese",
+    "myanmar",
+    "onnxruntime-web",
+    "webassembly",
+    "on-device",
+    "offline",
+    "ctc"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kowinhtike/nara-sar-web.git"
+  },
+  "homepage": "https://github.com/kowinhtike/nara-sar-web#readme",
+  "bugs": {
+    "url": "https://github.com/kowinhtike/nara-sar-web/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "fetch": "bash tools/fetch-model.sh",
+    "sample": "bash tools/make-sample.sh",
+    "parity": "node tools/parity.mjs",
+    "check": "for f in src/*.js server.mjs tools/parity.mjs; do node --check \"$f\" || exit 1; done"
+  },
+  "dependencies": {
+    "onnxruntime-web": "^1.31.1"
+  }
+}

@@ -1,0 +1,7 @@
+node_modules/
+models/
+samples/
+.workbuddy-ai/
+.DS_Store
+*.part
+npm-debug.log*

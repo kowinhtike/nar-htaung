@@ -1,0 +1,47 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Syntax check
+        run: npm run check
+
+      - name: Verify vendored ONNX Runtime files are present
+        run: |
+          test -s vendor/ort/ort.wasm.min.mjs
+          test -s vendor/ort/ort-wasm-simd-threaded.wasm
+          test -s vendor/ort/ort-wasm-simd-threaded.mjs
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Python reference sources compile
+        run: python -m compileall -q tools
+
+  license:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: License and notice present
+        run: |
+          test -s LICENSE
+          test -s NOTICE
+          grep -q "Apache License" LICENSE
+          grep -q "Nara SAR" NOTICE
