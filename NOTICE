@@ -1,7 +1,8 @@
-Nara SAR Web Client
-Copyright 2026 Nara SAR Web Client contributors
+NarHtaung
+Copyright 2026 NarHtaung contributors
 
-This product includes software and model artefacts developed by Nara
+NarHtaung is a browser client for the Nara SAR speech recognition model.
+It includes software and model artefacts developed by Nara
 contributors, distributed under the Apache License, Version 2.0.
 
     Nara SAR
@@ -38,6 +39,15 @@ The portable Torch architecture follows fairseq2's wav2vec2 implementation.
 
 ONNX Runtime Web is provided by Microsoft Corporation under the MIT license and
 is vendored in vendor/ort/ unmodified.
+
+Typography
+----------
+vendor/fonts/NotoSansMyanmar-myanmar.woff2
+
+    Noto Sans Myanmar
+    Copyright 2022 The Noto Project Authors (https://github.com/notofonts/myanmar)
+    Licensed under the SIL Open Font License, Version 1.1.
+    See vendor/fonts/OFL.txt.
 
 This NOTICE preserves attribution and describes modifications. It does not add
 restrictions to the Apache License, and it does not grant rights to the Nara or

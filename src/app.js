@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
-// UI shell for the standalone Nara SAR web client. All inference happens in
-// the worker; nothing is uploaded.
+// UI shell for NarHtaung. All inference happens in the worker; nothing is
+// uploaded.
 
 import { decodeAudioFile } from './audio.js';
 

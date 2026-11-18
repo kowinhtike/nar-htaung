@@ -1,9 +1,9 @@
 {
-  "name": "nara-sar-web",
+  "name": "narhtaung",
   "version": "0.1.0",
   "private": false,
   "type": "module",
-  "description": "Standalone Burmese and English speech recognition that runs entirely in the browser, powered by Nara SAR",
+  "description": "NarHtaung — standalone Burmese and English speech recognition that runs entirely in the browser, powered by Nara SAR",
   "keywords": [
     "speech-recognition",
     "asr",

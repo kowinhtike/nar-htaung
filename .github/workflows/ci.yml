@@ -44,4 +44,4 @@ jobs:
           test -s LICENSE
           test -s NOTICE
           grep -q "Apache License" LICENSE
-          grep -q "Nara SAR" NOTICE
+          grep -q "NarHtaung" NOTICE

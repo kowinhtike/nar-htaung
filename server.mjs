@@ -96,6 +96,6 @@ const server = createServer((request, response) => {
 });
 
 server.listen(port, () => {
-  console.log(`Nara SAR web client: http://localhost:${port}`);
+  console.log(`NarHtaung: http://localhost:${port}`);
   console.log('Cross-origin isolation is enabled, so WASM threads are available.');
 });

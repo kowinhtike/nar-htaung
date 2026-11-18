@@ -1,4 +1,4 @@
-# Nara SAR Web
+# NarHtaung
 
 **Standalone Burmese + English speech recognition that runs entirely in your browser.** No server, no API key, no audio upload — the model runs on the device with WebAssembly, and the tab works offline once the weights are cached.
 
@@ -6,9 +6,9 @@
 [![Model: Nara SAR](https://img.shields.io/badge/model-YeeNyunn%2Fnara--sar-5dcaa5.svg)](https://huggingface.co/YeeNyunn/nara-sar)
 [![No server](https://img.shields.io/badge/inference-100%25%20client--side-5dcaa5.svg)](#privacy)
 
-![Nara SAR Web screenshot](docs/screenshot.png)
+![NarHtaung screenshot](docs/screenshot.png)
 
-မြန်မာ + English အသံမှ စာသားပြောင်း web app။ အသံဖိုင် server ဆီ လုံးဝ မရောက်ပါ — browser ထဲမှာပဲ မော်ဒယ်ကို run တယ်။ ပထမတစ်ခါ weights (~430 MB) ကို ဒေါင်းပြီးရင် internet မလိုဘဲ သုံးလို့ရတယ်။
+**NarHtaung** — မြန်မာ + English အသံမှ စာသားပြောင်း web app။ အသံဖိုင် server ဆီ လုံးဝ မရောက်ပါ — browser ထဲမှာပဲ မော်ဒယ်ကို run တယ်။ ပထမတစ်ခါ weights (~430 MB) ကို ဒေါင်းပြီးရင် internet မလိုဘဲ သုံးလို့ရတယ်။
 
 ## Features
 
@@ -138,7 +138,7 @@ Audio is decoded and transcribed inside the tab. The only network traffic is fet
 
 Code in this repository: **Apache-2.0** (see [LICENSE](LICENSE)).
 
-It is built on [**Nara SAR**](https://huggingface.co/YeeNyunn/nara-sar) by Nara contributors (Apache-2.0), a fine-tune of Meta's [omniASR-CTC-300M](https://github.com/facebookresearch/omnilingual-asr) (Apache-2.0). The decoder, language model and syllable rules are ports of that release; the Python originals are kept in `tools/reference/` with their notices. See [NOTICE](NOTICE) for the full attribution chain.
+It is built on [**Nara SAR**](https://huggingface.co/YeeNyunn/nara-sar) by Nara contributors (Apache-2.0), a fine-tune of Meta's [omniASR-CTC-300M](https://github.com/facebookresearch/omnilingual-asr) (Apache-2.0). The decoder, language model and syllable rules are ports of that release; the Python originals are kept in `tools/reference/` with their notices. The bundled Noto Sans Myanmar webfont is SIL OFL 1.1. See [NOTICE](NOTICE) for the full attribution chain.
 
 **Powered by Nara SAR.** This is an independent client — not an official Nara release, and not endorsed by Nara or Meta. The Apache-2.0 license does not grant rights to their names or logos.
 
